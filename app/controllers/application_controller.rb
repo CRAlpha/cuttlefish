@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
    dash_path
   end
 
-  force_ssl :if => Proc.new{ force_ssl? }
+  # force_ssl :if => Proc.new{ force_ssl? }
 
   private
 

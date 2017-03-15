@@ -5,7 +5,7 @@ require 'bundler/capistrano'
 require "dotenv/deployment/capistrano"
 
 set :application, "cuttlefish"
-set :repository,  "https://github.com/mlandauer/cuttlefish.git"
+set :repository,  "https://github.com/CRAlpha/cuttlefish.git"
 set :rvm_ruby_string, :local
 set :rvm_type, :system
 # The default for rvm_path is /usr/local/rvm
@@ -15,7 +15,7 @@ set :rvm_install_with_sudo, true
 
 #server "kedumba.openaustraliafoundation.org.au", :app, :web, :db, primary: true
 #server "localhost:2222", :app, :web, :db, primary: true
-server "li743-35.members.linode.com", :app, :web, :db, primary: true
+server "192.168.33.10", :app, :web, :db, primary: true
 
 set :use_sudo, false
 set :deploy_via, :remote_cache
