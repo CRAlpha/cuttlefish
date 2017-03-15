@@ -15,7 +15,7 @@ set :rvm_install_with_sudo, true
 
 #server "kedumba.openaustraliafoundation.org.au", :app, :web, :db, primary: true
 #server "localhost:2222", :app, :web, :db, primary: true
-server "192.168.33.10", :app, :web, :db, primary: true
+server "athena.huaxing.com:8122", :app, :web, :db, primary: true
 
 set :use_sudo, false
 set :deploy_via, :remote_cache
