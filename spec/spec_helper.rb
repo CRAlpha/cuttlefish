@@ -1,10 +1,10 @@
 require 'simplecov'
-require 'coveralls'
+# require 'coveralls'
 
 # Generate coverage locally in html as well as in coveralls.io
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
+  # Coveralls::SimpleCov::Formatter
 ]
 SimpleCov.start('rails')
 
