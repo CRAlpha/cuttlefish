@@ -5,3 +5,5 @@ POSTFIX_LOG_PATH=/var/log/mail.log
 CUTTLEFISH_DOMAIN=cf.zhaoalpha.com
 CUTTLEFISH_DOMAIN_CERT_CHAIN_FILE={{ cuttlefish_cert_path }}
 CUTTLEFISH_DOMAIN_PRIVATE_KEY_FILE={{ cuttlefish_key_path }}
+CUTTLEFISH_BOUNCE_EMAIL=bounce@cf.zhaoalpha.com
+CUTTLEFISH_SENDER_EMAIL=admin@cf.zhaoalpha.com
