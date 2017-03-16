@@ -8,9 +8,10 @@ class OutgoingDelivery
   def send
     if delivery.send?
       # TODO Replace use of Net::SMTP with deliver! as part of mail gem
-      Net::SMTP.start(Rails.configuration.postfix_smtp_host, Rails.configuration.postfix_smtp_port) do |smtp|
-        smtp.enable_starttls
-        response = smtp.send_message(Filters::Master.new(delivery).filter(delivery.data), delivery.return_path, [delivery.to])
+      smtp = Net::SMTP.new(Rails.configuration.postfix_smtp_host, Rails.configuration.postfix_smtp_port)
+      smtp.enable_starttls_auto
+      smtp.start do |s|
+        response = s.send_message(Filters::Master.new(delivery).filter(delivery.data), delivery.return_path, [delivery.to])
         delivery.update_attributes(
           postfix_queue_id: OutgoingDelivery.extract_postfix_queue_id_from_smtp_message(response.message),
           sent: true)
