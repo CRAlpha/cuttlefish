@@ -3,3 +3,5 @@ DEVISE_SECRET_KEY={{ devise_secret_key }}
 CUTTLEFISH_HASH_SALT="{{ cuttlefish_hash_salt }}"
 POSTFIX_LOG_PATH=/var/log/mail.log
 CUTTLEFISH_DOMAIN=cf.zhaoalpha.com
+CUTTLEFISH_DOMAIN_CERT_CHAIN_FILE={{ cuttlefish_cert_path }}
+CUTTLEFISH_DOMAIN_PRIVATE_KEY_FILE={{ cuttlefish_key_path }}

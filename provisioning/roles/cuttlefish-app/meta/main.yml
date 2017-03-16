@@ -123,7 +123,7 @@ galaxy_info:
 dependencies:
   - {role: ANXS.postgresql, postgresql_ext_install_dev_headers: yes}
   - role: rvm_io.ruby
-    rvm1_rubies: ['ruby-2.1.5']
+    rvm1_rubies: ['ruby-2.3.1']
     rvm1_rvm_check_for_updates: false
     rvm1_install_path: '/usr/local/lib/rvm'
     rvm1_user: 'root'
