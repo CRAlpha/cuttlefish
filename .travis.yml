@@ -4,4 +4,5 @@ rvm:
 sudo: false
 before_script:
   - cp config/database.travis.yml config/database.yml
+  - bundle config mirror.https://gems.ruby-china.org https://rubygems.org
   - bundle exec rake db:setup
