@@ -1,8 +1,7 @@
 language: ruby
-rvm:
-  - 2.1.5
 sudo: false
+before_install:
+  - bundle config mirror.https://gems.ruby-china.org https://rubygems.org
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - bundle config mirror.https://gems.ruby-china.org https://rubygems.org
   - bundle exec rake db:setup
