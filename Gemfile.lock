@@ -17,7 +17,7 @@ GIT
       formtastic (~> 2.2)
 
 GEM
-  remote: https://rubygems.org/
+  remote: https://gems.ruby-china.org/
   specs:
     CFPropertyList (2.3.5)
     actionmailer (4.2.7.1)
