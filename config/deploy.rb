@@ -60,21 +60,21 @@ namespace :foreman do
   desc "Export the Procfile to Ubuntu's upstart scripts"
   task :export, roles: :app do
     #run "cd #{current_path} && sudo bundle exec foreman export upstart /etc/init -a #{application} -u #{user} -l #{shared_path}/log -f Procfile.production"
-    run "cd #{current_path} && sudo /usr/local/lib/rvm/wrappers/default/bundle exec foreman export systemd /etc/systemd/system -a #{application} -u #{user} -l #{shared_path}/log -f Procfile.production"
+    run "cd #{current_path} && sudo /usr/local/lib/rvm/wrappers/default/bundle exec foreman export upstart /etc/init -a #{application} -u #{user} -l #{shared_path}/log -f Procfile.production"
   end
 
   desc "Start the application services"
   task :start, roles: :app do
-    sudo "systemctl start #{application}.target"
+    sudo "service #{application} start"
   end
 
   desc "Stop the application services"
   task :stop, roles: :app do
-    sudo "systemctl restart #{application}.target"
+    sudo "service #{application} stop"
   end
 
   desc "Restart the application services"
   task :restart, roles: :app do
-    sudo "systemctl stop #{application}.target"
+    run "sudo service #{application} restart"
   end
 end
