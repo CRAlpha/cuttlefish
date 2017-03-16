@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.org'
+source 'https://rubygems.org/'
 
 gem 'dotenv-deployment'
 
