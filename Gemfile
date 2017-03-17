@@ -57,7 +57,7 @@ gem "friendly_id"
 gem "user_agent_parser"
 gem "mail_form"
 gem 'newrelic_rpm'
-gem 'honeybadger'
+gem "sentry-raven"
 gem 'dkim'
 gem 'fog'
 
