@@ -93,6 +93,7 @@ group :development do
   gem 'rvm-capistrano', require: false
   # Newer versions don't support Ruby 2.1. Remove this when we upgrade Ruby
   gem "listen", "~> 2"
+  gem 'honeybadger'
 end
 
 group :test do

@@ -10,7 +10,7 @@ class App < ActiveRecord::Base
   after_create :set_smtp_username
 
   def self.cuttlefish
-    App.find_by(cuttlefish: true) || App.create(cuttlefish: true, name: "Cuttlefish")
+    App.find_by(cuttlefish: true)
   end
 
   def new_password!
