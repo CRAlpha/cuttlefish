@@ -7,9 +7,6 @@ class InternalMailer < Devise::Mailer
       port: Rails.configuration.cuttlefish_smtp_port,
       user_name: App.cuttlefish.smtp_username,
       password: App.cuttlefish.smtp_password,
-      # So that we don't get a certificate name and host mismatch we're just
-      # disabling the check.
-      openssl_verify_mode: "none",
       authentication: :plain
     }
   end
