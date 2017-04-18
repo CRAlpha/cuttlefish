@@ -1,8 +1,12 @@
-require File.expand_path File.join(File.dirname(__FILE__), 'mail_worker')
 require 'ostruct'
 require 'eventmachine'
 require 'mail'
+require File.expand_path File.join(File.dirname(__FILE__), 'email_data_cache')
+require File.expand_path File.join(File.dirname(__FILE__), 'mail_worker')
 require File.expand_path File.join(File.dirname(__FILE__), "..", "app", "models", "app")
+require File.expand_path File.join(File.dirname(__FILE__), "..", "app", "models", "email")
+require File.expand_path File.join(File.dirname(__FILE__), "..", "app", "models", "address")
+require File.expand_path File.join(File.dirname(__FILE__), "..", "app", "models", "delivery")
 
 class CuttlefishSmtpServer
   attr_accessor :connections
@@ -68,7 +72,6 @@ class CuttlefishSmtpConnection < EM::P::SmtpServer
   def self.default_parameters
     parameters = {
       auth: :required,
-      starttls: :required
     }
     # Don't use our own SSL certificate in development
     unless Rails.env.development?
@@ -76,6 +79,7 @@ class CuttlefishSmtpConnection < EM::P::SmtpServer
         cert_chain_file: Rails.configuration.cuttlefish_domain_cert_chain_file,
         private_key_file: Rails.configuration.cuttlefish_domain_private_key_file
       }
+      parameters[:starttls] = :required
     end
     parameters
   end
@@ -114,8 +118,18 @@ class CuttlefishSmtpConnection < EM::P::SmtpServer
     # because before it gets stored in redis it needs to be serialised to json
     # which requires a conversion to utf8
     # It comes in with unknown encoding - so let's encode it as base64
-    MailWorker.perform_async(current.recipients, Base64.encode64(current.data), current.app_id)
+    email = nil
+    ActiveRecord::Base.transaction do
+      from = Mail.new(current.data).from.first
+      email = Email.create!(from: from,
+                            to: current.recipients.map { |t| t.match("<(.*)>")[1] },
+                            data: current.data,
+                            app_id: current.app_id)
+    end
 
+    if email.present?
+      MailWorker.perform_async(email.id)
+    end
     @current = OpenStruct.new
     true
   end

@@ -34,7 +34,6 @@ class Filters::Master < Filters::Base
       cuttlefish_key: App.cuttlefish.dkim_key,
       sender_email: Rails.configuration.cuttlefish_sender_email
     )
-
     filtered1 = filter1.filter_mail(mail)
     filtered2 = filter2.filter_mail(filtered1)
     filtered3 = filter3.filter_mail(filtered2)
