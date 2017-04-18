@@ -11,8 +11,7 @@ class Filters::Tracking < Filters::Mail
     Rails.env.development? ? "localhost:3000" : tracking_domain
   end
 
-  # Whether to use ssl for the open tracking image or rewritten link
   def protocol
-    using_custom_tracking_domain || Rails.env.development? ? "http" : "https"
+    using_custom_tracking_domain || 'http'
   end
 end
