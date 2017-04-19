@@ -15,7 +15,7 @@ class PostfixController < ApplicationController
       delivery = Delivery.find_by(id: id)
       return head :bad_request if delivery.blank?
 
-      PostfixLogLine.create(delivery: delivery, time: mail.date, relay: :local,
+      PostfixLogLine.create(delivery: delivery, time: mail.date || Time.current, relay: :local,
                             delay: '0', delays: '0', dsn: '5.0.0',
                             extended_status: (mail.html_part || mail.text_part || mail).body.decoded)
 
