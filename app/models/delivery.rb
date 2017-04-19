@@ -9,10 +9,10 @@ class Delivery < ActiveRecord::Base
   belongs_to :app
 
   delegate :from, :from_address, :from_domain, :text_part, :html_part, :data,
-    :click_tracking_enabled?, :open_tracking_enabled?, :subject, to: :email
+           :click_tracking_enabled?, :open_tracking_enabled?, :subject, to: :email
 
   delegate :tracking_domain, :custom_tracking_domain?, to: :app
-  
+
   before_save :update_my_status!
   before_create :update_app_id!
 
@@ -65,7 +65,8 @@ class Delivery < ActiveRecord::Base
   end
 
   def return_path
-    Rails.configuration.cuttlefish_bounce_email
+    bounce_name, domain = Rails.configuration.cuttlefish_bounce_email.split('@')
+    "#{bounce_name}+#{self.id}@#{domain}"
   end
 
   def opened?
@@ -73,7 +74,7 @@ class Delivery < ActiveRecord::Base
   end
 
   def clicked?
-    delivery_links.any?{|delivery_link| delivery_link.click_events.size > 0}
+    delivery_links.any? { |delivery_link| delivery_link.click_events.size > 0 }
   end
 
   def app_name
@@ -85,14 +86,14 @@ class Delivery < ActiveRecord::Base
   # zero error)
   def self.open_rate(deliveries)
     n = deliveries.where("open_events_count > 0").count
-    total =  deliveries.where(open_tracked: true).count
+    total = deliveries.where(open_tracked: true).count
     (n.to_f / total) if total > 0
   end
 
   def self.click_rate(deliveries)
     # By doing an _inner_ join we only end up counting deliveries that have click_events
     n = deliveries.joins(:delivery_links).where("click_events_count > 0").select("distinct(deliveries.id)").count
-    total =  deliveries.joins(:delivery_links).select("distinct(deliveries.id)").count
+    total = deliveries.joins(:delivery_links).select("distinct(deliveries.id)").count
     (n.to_f / total) if total > 0
   end
 end
