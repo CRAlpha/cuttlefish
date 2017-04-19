@@ -323,6 +323,7 @@ GEM
     hashdiff (0.3.2)
     hashie (3.5.5)
     highline (1.7.8)
+    hiredis (0.6.1)
     hitimes (1.2.4)
     html2haml (2.1.0)
       erubis (~> 2.7.0)
@@ -448,6 +449,8 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     redis (3.3.3)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     ref (2.0.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
@@ -593,6 +596,7 @@ DEPENDENCIES
   guard-rspec
   haml-coderay
   haml-rails
+  hiredis
   jbuilder
   jquery-rails
   less-rails
@@ -609,6 +613,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  redis-namespace
   rmagick
   rspec-activemodel-mocks
   rspec-rails

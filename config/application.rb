@@ -22,6 +22,7 @@ module Cuttlefish
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.active_job.queue_adapter = :sidekiq
     # We only use the ip address to track open and click events. If the client forges the
     # the HTTP_CLIENT_IP header in the request by default rails will throw an exception
     # and drop the request. We're not to so picky.

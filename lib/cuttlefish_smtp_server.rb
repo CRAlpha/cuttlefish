@@ -2,6 +2,7 @@ require 'ostruct'
 require 'eventmachine'
 require 'mail'
 require File.expand_path File.join(File.dirname(__FILE__), 'email_data_cache')
+require File.expand_path File.join(File.dirname(__FILE__), "..", 'config', 'initializers', 'sidekiq')
 require File.expand_path File.join(File.dirname(__FILE__), 'mail_worker')
 require File.expand_path File.join(File.dirname(__FILE__), "..", "app", "models", "app")
 require File.expand_path File.join(File.dirname(__FILE__), "..", "app", "models", "email")

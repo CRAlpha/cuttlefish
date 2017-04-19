@@ -60,6 +60,8 @@ gem 'newrelic_rpm'
 gem "sentry-raven"
 gem 'dkim'
 gem 'fog'
+gem 'hiredis'
+gem 'redis-namespace'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
