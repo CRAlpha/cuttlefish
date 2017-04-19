@@ -65,8 +65,9 @@ class Delivery < ActiveRecord::Base
   end
 
   def return_path
+    verifier = ActiveSupport::MessageVerifier.new(Rails.application.secrets.secret_key_base)
     bounce_name, domain = Rails.configuration.cuttlefish_bounce_email.split('@')
-    "#{bounce_name}+#{self.id}@#{domain}"
+    "#{bounce_name}+#{verifier.generate(self.id)}@#{domain}"
   end
 
   def opened?

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  post 'postfix', to: 'postfix#create'
+
   resources :admins, only: [:index]
   resources :emails, only: [:index, :show], as: :deliveries, controller: "deliveries"
   # Allow "." in the id's by using the constraint
