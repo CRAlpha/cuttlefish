@@ -66,7 +66,7 @@ class App < ActiveRecord::Base
   end
 
   def dkim_private_key
-    update_attributes(dkim_private_key: OpenSSL::PKey::RSA.new(2048).to_pem) if read_attribute(:dkim_private_key).nil?
+    update_attributes(dkim_private_key: OpenSSL::PKey::RSA.new(1024).to_pem) if read_attribute(:dkim_private_key).nil?
     read_attribute(:dkim_private_key)
   end
 
