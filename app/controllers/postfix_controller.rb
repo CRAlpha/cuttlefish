@@ -21,6 +21,7 @@ class PostfixController < ApplicationController
 
       key = "bounce-from-email-#{delivery.email}"
       count = $redis.incr(key)
+      $redis.expire(key, 3600 * 24)
       if count >= 5
         BlackList.create(team_id: delivery.app.team_id, address: delivery.address, caused_by_delivery: delivery)
         $redis.del(key)
