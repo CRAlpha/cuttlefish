@@ -6,7 +6,7 @@ class PostfixController < ApplicationController
   def create
     mail = Mail.new(request.raw_post)
     to = mail.to.first
-    if to.present? && to =~ /bounce\+(.+)@cf.zhaoalpha.com/
+    if to.present? && to =~ /bounce\+(.+)@alpha.huaxing.com/
       verifier = ActiveSupport::MessageVerifier.new(Rails.application.secrets.secret_key_base)
 
       id = verifier.verify($1)

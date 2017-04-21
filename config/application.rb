@@ -37,7 +37,7 @@ module Cuttlefish
     # Cuttlefish specific configuration below here ONLY #
     #####################################################
 
-    config.cuttlefish_domain = ENV["CUTTLEFISH_DOMAIN"] || "cf.zhaoalpha.com"
+    config.cuttlefish_domain = ENV["CUTTLEFISH_DOMAIN"] || "alpha.huaxing.com"
     # TODO Rename the certificate to generic name that doesn't include domain
     config.cuttlefish_domain_cert_chain_file =
       ENV["CUTTLEFISH_DOMAIN_CERT_CHAIN_FILE"] || "/etc/ssl/cf.zhaoalpha.pem"
@@ -61,8 +61,8 @@ module Cuttlefish
     config.max_no_emails_to_store = ENV["MAX_NO_EMAILS_TO_STORE"] ? ENV["MAX_NO_EMAILS_TO_STORE"].to_i : 100
     # The devise, bounce and sender email addresses need to be on the cuttlefish_domain domain
     # TODO Force this to be the case
-    config.devise_emails_from = ENV["DEVISE_EMAILS_FROM"] || "contact@cf.zhaoalpha.com"
-    config.cuttlefish_bounce_email = ENV["CUTTLEFISH_BOUNCE_EMAIL"] || "bounces@cf.zhaoalpha.com"
-    config.cuttlefish_sender_email = ENV["CUTTLEFISH_SENDER_EMAIL"] || "sender@cf.zhaoalpha.com"
+    config.devise_emails_from = ENV["DEVISE_EMAILS_FROM"] || "contact@alpha.huaxing.com"
+    config.cuttlefish_bounce_email = ENV["CUTTLEFISH_BOUNCE_EMAIL"] || "bounces@alpha.huaxing.com"
+    config.cuttlefish_sender_email = ENV["CUTTLEFISH_SENDER_EMAIL"] || "sender@alpha.huaxing.com"
   end
 end
