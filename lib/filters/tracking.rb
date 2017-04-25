@@ -12,6 +12,6 @@ class Filters::Tracking < Filters::Mail
   end
 
   def protocol
-    using_custom_tracking_domain || 'http'
+    'http'
   end
 end
