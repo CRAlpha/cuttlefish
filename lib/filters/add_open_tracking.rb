@@ -17,7 +17,7 @@ class Filters::AddOpenTracking < Filters::Tracking
       # TODO This feels out of place in a filter as it's writing
       delivery.set_open_tracked!
       # TODO Add image tag in a place to keep html valid (not just the end of the document)
-      input + image_tag(url, alt: nil)
+      input + image_tag(url, alt: '')
     else
       input
     end
