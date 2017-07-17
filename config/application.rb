@@ -37,12 +37,10 @@ module Cuttlefish
     # Cuttlefish specific configuration below here ONLY #
     #####################################################
 
-    config.cuttlefish_domain = ENV["CUTTLEFISH_DOMAIN"] || "alpha.huaxing.com"
+    config.cuttlefish_domain = ENV["CUTTLEFISH_DOMAIN"]
     # TODO Rename the certificate to generic name that doesn't include domain
-    config.cuttlefish_domain_cert_chain_file =
-      ENV["CUTTLEFISH_DOMAIN_CERT_CHAIN_FILE"] || "/etc/ssl/cf.zhaoalpha.pem"
-    config.cuttlefish_domain_private_key_file =
-      ENV["CUTTLEFISH_DOMAIN_PRIVATE_KEY_FILE"] || "/etc/ssl/private/cf.zhaoalpha.key"
+    config.cuttlefish_domain_cert_chain_file = ENV["CUTTLEFISH_DOMAIN_CERT_CHAIN_FILE"]
+    config.cuttlefish_domain_private_key_file = ENV["CUTTLEFISH_DOMAIN_PRIVATE_KEY_FILE"]
 
     config.postfix_smtp_host = ENV["POSTFIX_SMTP_HOST"] || "localhost"
     config.postfix_smtp_port = ENV["POSTFIX_SMTP_PORT"] ? ENV["POSTFIX_SMTP_PORT"].to_i : 25
