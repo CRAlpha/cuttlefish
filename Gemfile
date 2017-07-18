@@ -62,6 +62,7 @@ gem 'dkim'
 gem 'fog'
 gem 'hiredis'
 gem 'redis-namespace'
+gem 'rest-client'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -86,6 +86,7 @@ class AppsController < ApplicationController
 
   def app_parameters
     params.require(:app).permit(:name, :url, :custom_tracking_domain, :open_tracking_enabled,
-      :click_tracking_enabled, :from_domain)
+                                :inbound_webhook, :event_webhook,
+                                :click_tracking_enabled, :from_domain)
   end
 end
