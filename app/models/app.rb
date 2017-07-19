@@ -4,7 +4,7 @@ class App < ActiveRecord::Base
   belongs_to :team
 
   validates :name, presence: true, format: {with: /\A[a-zA-Z0-9_ ]+\z/, message: "Only letters, numbers, spaces and underscores"}
-  validate :custom_tracking_domain_points_to_correct_place
+  # validate :custom_tracking_domain_points_to_correct_place
 
   before_create :set_smtp_password
   after_create :set_smtp_username
