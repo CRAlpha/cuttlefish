@@ -119,20 +119,20 @@ class CuttlefishSmtpConnection < EM::P::SmtpServer
     # because before it gets stored in redis it needs to be serialised to json
     # which requires a conversion to utf8
     # It comes in with unknown encoding - so let's encode it as base64
-    email = nil
+    @email = nil
+
     ActiveRecord::Base.transaction do
       from = Mail.new(current.data).from.first
-      email = Email.create!(from: from,
+      @email = Email.create!(from: from,
                             to: current.recipients.map { |t| t.match("<(.*)>")[1] },
                             data: current.data,
                             app_id: current.app_id)
-    end
-
-    if email.present?
       MailWorker.perform_async(email.id)
     end
+
     @current = OpenStruct.new
-    true
+
+    @email.presence
   end
 
   def receive_plain_auth(user, password)
@@ -159,5 +159,49 @@ class CuttlefishSmtpConnection < EM::P::SmtpServer
 
   def current
     @current ||= OpenStruct.new
+  end
+
+  def process_data_line ln
+    if ln == "."
+      if @databuffer.length > 0
+        receive_data_chunk @databuffer
+        @databuffer.clear
+      end
+
+      d = receive_message
+
+      success_message =
+        if @email
+          "created with id #{@email.id}"
+        else
+          "created"
+        end
+
+      succeeded = proc {
+        send_data "250 Message #{success_message}\r\n"
+        reset_protocol_state
+      }
+      failed = proc {
+        send_data "550 Message rejected\r\n"
+        reset_protocol_state
+      }
+
+      if d.respond_to?(:set_deferred_status)
+        d.callback(&succeeded)
+        d.errback(&failed)
+      else
+        (d ? succeeded : failed).call
+      end
+
+      @state.delete :data
+    else
+      # slice off leading . if any
+      ln.slice!(0...1) if ln[0] == ?.
+      @databuffer << ln
+      if @databuffer.length > @@parms[:chunksize]
+        receive_data_chunk @databuffer
+        @databuffer.clear
+      end
+    end
   end
 end

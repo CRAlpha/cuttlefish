@@ -8,4 +8,5 @@ CUTTLEFISH_DOMAIN_PRIVATE_KEY_FILE={{ cuttlefish_key_path }}
 CUTTLEFISH_BOUNCE_EMAIL=bounce@alpha.huaxing.com
 CUTTLEFISH_SENDER_EMAIL=admin@alpha.huaxing.com
 POSTFIX_SMTP_HOST={{ postfix_smtp_host }}
+POSTFIX_SMTP_PORT={{ postfix_smtp_port }}
 SENTRY_DSN={{ sentry_dsn }}
