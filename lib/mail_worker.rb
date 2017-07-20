@@ -1,6 +1,7 @@
 # For Sidekiq
 class MailWorker
   include Sidekiq::Worker
+  sidekiq_options queue: 'mailers'
 
   def perform(email_id)
     email = Email.find(email_id)
