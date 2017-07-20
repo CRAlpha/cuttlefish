@@ -127,9 +127,11 @@ class CuttlefishSmtpConnection < EM::P::SmtpServer
                             to: current.recipients.map { |t| t.match("<(.*)>")[1] },
                             data: current.data,
                             app_id: current.app_id)
-      MailWorker.perform_async(@email.id)
     end
 
+    if @email
+      MailWorker.perform_async(@email.id)
+    end
     @current = OpenStruct.new
 
     @email.presence
