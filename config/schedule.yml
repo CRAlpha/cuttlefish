@@ -1,0 +1,3 @@
+event_webhook:
+  cron: '*/5 * * * *'
+  class: EventWebhookWorker

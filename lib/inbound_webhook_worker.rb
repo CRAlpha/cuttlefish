@@ -1,4 +1,4 @@
-class WebhookWorker
+class InboundWebhookWorker
   include Sidekiq::Worker
   def perform(url, body)
     begin

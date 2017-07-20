@@ -128,6 +128,8 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
+    et-orbi (1.0.4)
+      tzinfo
     eventmachine (1.2.3)
     excon (0.55.0)
     execjs (2.7.0)
@@ -492,6 +494,8 @@ GEM
     ruby_parser (3.8.4)
       sexp_processor (~> 4.1)
     rubyzip (1.2.1)
+    rufus-scheduler (3.4.2)
+      et-orbi (~> 1.0)
     rvm-capistrano (1.4.1)
       capistrano (>= 2.0.0)
     safe_yaml (1.0.4)
@@ -515,6 +519,10 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
+    sidekiq-cron (0.4.4)
+      redis-namespace (>= 1.5.2)
+      rufus-scheduler (>= 2.0.24)
+      sidekiq (>= 4.2.1)
     simplecov (0.12.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -635,6 +643,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-raven
   sidekiq
+  sidekiq-cron (~> 0.4.0)
   sinatra
   spring
   spring-commands-rspec

@@ -16,7 +16,7 @@ class PostfixController < ApplicationController
       head :not_found if app.blank? || app.inbound_webhook.blank?
       body = request.raw_post
       body = body.encode(Encoding.find('UTF-8'), { invalid: :replace, undef: :replace, replace: '' })
-      WebhookWorker.perform_async(app.inbound_webhook, body)
+      InboundWebhookWorker.perform_async(app.inbound_webhook, body)
       head :ok
     end
   end

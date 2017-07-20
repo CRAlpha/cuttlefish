@@ -29,6 +29,7 @@ gem 'jbuilder'
 
 gem "eventmachine"
 gem 'sidekiq'
+gem "sidekiq-cron", "~> 0.4.0"
 gem 'sinatra', :require => nil
 
 gem 'foreman'
