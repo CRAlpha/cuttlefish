@@ -100,7 +100,6 @@
       %li.active= link_to "HTML", "#html", data: {toggle: "pill"}
     - else
       %li.active= link_to "Text", "#text", data: {toggle: "pill"}
-    %li= link_to "Source", "#source", data: {toggle: "pill"}
 
   .tab-content
     - if @delivery.html_part && @delivery.text_part
@@ -114,9 +113,6 @@
     - else
       %div.tab-pane.active#text
         %pre= @delivery.text_part
-    %div.tab-pane#source
-      %pre= @delivery.data
-
     %p.muted
       This shows the original email as sent by you to Cuttlefish
 
