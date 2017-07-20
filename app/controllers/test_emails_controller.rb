@@ -7,14 +7,11 @@ class TestEmailsController < ApplicationController
   def new
     authorize :test_email
     @to = current_admin.email_with_name
-    @subject = "This is a test email from Cuttlefish"
+    @subject = "这是一封来自华兴Alpha的测试邮件"
     @text = <<-EOF
-Hello folks. Hopefully this should have worked and you should
-be reading this. So, all is good.
+你好,
 
-Love,
-The Awesome Cuttlefish
-<a href="http://cuttlefish.io">http://cuttlefish.io</a>
+华兴Alpha <a href="https://alpha.huaxing.com">https://alpha.huaxing.com</a>
     EOF
   end
 
