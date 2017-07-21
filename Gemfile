@@ -28,8 +28,8 @@ gem 'jquery-rails'
 gem 'jbuilder'
 
 gem "eventmachine"
-gem 'sidekiq'
-gem "sidekiq-cron", "~> 0.4.0"
+gem 'sidekiq', "~> 5.0.0"
+gem "sidekiq-cron", "~> 0.6.0"
 gem 'sinatra', :require => nil
 
 gem 'foreman'

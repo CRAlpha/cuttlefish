@@ -514,14 +514,13 @@ GEM
       faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.8.0)
     shellany (0.0.1)
-    sidekiq (4.2.9)
+    sidekiq (5.0.0)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
-      redis (~> 3.2, >= 3.2.1)
-    sidekiq-cron (0.4.4)
-      redis-namespace (>= 1.5.2)
-      rufus-scheduler (>= 2.0.24)
+      redis (~> 3.3, >= 3.3.3)
+    sidekiq-cron (0.6.0)
+      rufus-scheduler (>= 3.3.0)
       sidekiq (>= 4.2.1)
     simplecov (0.12.0)
       docile (~> 1.1.0)
@@ -642,8 +641,8 @@ DEPENDENCIES
   sass-rails
   selenium-webdriver
   sentry-raven
-  sidekiq
-  sidekiq-cron (~> 0.4.0)
+  sidekiq (~> 5.0.0)
+  sidekiq-cron (~> 0.6.0)
   sinatra
   spring
   spring-commands-rspec
