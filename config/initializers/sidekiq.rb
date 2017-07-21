@@ -1,5 +1,3 @@
-Sidekiq.remove_delay!
-
 Sidekiq.default_worker_options = {
   retry: 4
 }
