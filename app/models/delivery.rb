@@ -47,8 +47,10 @@ class Delivery < ActiveRecord::Base
     if sent?
       last_line = postfix_log_lines.first
       last_line ? last_line.status : "sent"
-    else
+    elsif send?
       "not_sent"
+    else
+      "dropped"
     end
   end
 

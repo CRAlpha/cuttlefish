@@ -14,6 +14,8 @@ class OutgoingDelivery
           postfix_queue_id: OutgoingDelivery.extract_postfix_queue_id_from_smtp_message(response.message),
           sent: true)
       end
+    else
+      delivery.save!
     end
   end
 
