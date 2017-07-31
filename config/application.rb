@@ -56,7 +56,7 @@ module Cuttlefish
     config.disable_ssl = !ENV["DISABLE_SSL"].nil?
     config.postfix_log_path = ENV["POSTFIX_LOG_PATH"] || "/var/log/mail/mail.log"
     # By default keep the full content of the last 100 emails per app
-    config.max_no_emails_to_store = ENV["MAX_NO_EMAILS_TO_STORE"] ? ENV["MAX_NO_EMAILS_TO_STORE"].to_i : 100
+    config.max_no_emails_to_store = ENV["MAX_NO_EMAILS_TO_STORE"] ? ENV["MAX_NO_EMAILS_TO_STORE"].to_i : 1000
     # The devise, bounce and sender email addresses need to be on the cuttlefish_domain domain
     # TODO Force this to be the case
     config.devise_emails_from = ENV["DEVISE_EMAILS_FROM"] || "contact@alpha.huaxing.com"
