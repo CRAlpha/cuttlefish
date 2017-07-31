@@ -15,7 +15,7 @@ class OutgoingDelivery
           sent: true)
       end
     else
-      delivery.save!
+      delivery.update_column(status: "dropped")
     end
   end
 
