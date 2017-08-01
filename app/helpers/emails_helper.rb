@@ -6,7 +6,8 @@ module EmailsHelper
       "not_sent" => "info",
       "sent" => "success",
       "delivered" => "success",
-      "soft_bounce" => "warning"
+      "soft_bounce" => "warning",
+      "dropped" => "warning"
     }
     map["hard_bounce"] = variant ? "important" : "error"
 
@@ -34,6 +35,8 @@ module EmailsHelper
       "Soft bounce"
     when "hard_bounce"
       "Hard bounce"
+    when "dropped"
+      "Dropped"
     else
       raise "Unknown status"
     end
