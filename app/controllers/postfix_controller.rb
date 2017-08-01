@@ -9,7 +9,7 @@ class PostfixController < ApplicationController
 
     domain = to_address.domain
     app = App.find_by(from_domain: domain)
-    head :not_found if app.blank? || app.inbound_webhook.blank?
+    return head :not_found if app.blank? || app.inbound_webhook.blank?
     body = request.raw_post
     body = body.encode(Encoding.find('UTF-8'), { invalid: :replace, undef: :replace, replace: '' })
     InboundWebhookWorker.perform_async(app.inbound_webhook, body)
