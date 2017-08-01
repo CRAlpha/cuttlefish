@@ -15,7 +15,7 @@ class OutgoingDelivery
           sent: true)
       end
     else
-      delivery.update_column(status: "dropped")
+      delivery.update_columns(status: "dropped")
     end
   end
 
