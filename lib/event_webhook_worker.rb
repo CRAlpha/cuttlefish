@@ -2,7 +2,7 @@ class EventWebhookWorker
   include Sidekiq::Worker
   def perform
     App.where.not(event_webhook: nil).find_each do |app|
-      query = app.deliveries.includes(:address).where(reported: false).limit(100).where.not(status: ['sent', 'not_sent'])
+      query = app.deliveries.includes(:address).where(reported: false).limit(20).where.not(status: ['sent', 'not_sent'])
       if app.event_webhook =~ URI::regexp
         events = []
         query.find_each do |delivery|
