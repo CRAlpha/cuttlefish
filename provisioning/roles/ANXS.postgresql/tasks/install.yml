@@ -21,7 +21,7 @@
   apt:
     name: "{{item}}"
     state: present
-  environment: postgresql_env
+  environment: "{{postgresql_env}}"
   with_items:
     - "postgresql-{{postgresql_version}}"
     - "postgresql-client-{{postgresql_version}}"
