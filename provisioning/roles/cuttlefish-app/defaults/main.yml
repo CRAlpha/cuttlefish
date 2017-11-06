@@ -1,2 +1,19 @@
 ---
 # defaults file for cuttlefish-app
+secret_key_base: 'secret_key_base'
+devise_secret_key: 'devise_secret_key'
+cuttlefish_hash_salt: 'cuttlefish_hash_salt'
+
+db_password: 'password'
+
+google_analytics_code: "foo"
+
+new_relic_license_key: "foo"
+new_relic_app_name: "foo"
+
+honeybadger_api_key: "foo"
+
+s3_bucket: "foo"
+
+aws_access_key_id: "foo"
+aws_secret_access_key: "foo"

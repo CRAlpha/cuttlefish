@@ -1,1 +1,1 @@
-athena.huaxing.com:8122
+localhost ansible_connection=local
